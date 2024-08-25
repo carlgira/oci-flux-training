@@ -12,7 +12,7 @@ data "oci_core_images" "gpu_images" {
 
 # Create a compute instance with a public IP address using oci provider
 resource "oci_core_instance" "gpu_instance" {
-  availability_domain = data.oci_identity_availability_domains.ADs.availability_domains[0].name
+  availability_domain = data.oci_identity_availability_domains.ADs.availability_domains[2].name
   compartment_id      = var.compartment_ocid
   display_name        = "${var.instance_name}-${count.index}"
   shape               = var.instance_shape
