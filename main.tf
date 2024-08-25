@@ -3,11 +3,11 @@ data "oci_core_images" "gpu_images" {
   compartment_id = var.compartment_ocid
   operating_system = "Oracle Linux"
   operating_system_version = "8"
-  /*filter {
+  filter {
     name = "display_name"
     values = ["^.*-GPU-.*$"]
     regex  = true
-  }*/
+  }
 }
 
 # Create a compute instance with a public IP address using oci provider
@@ -36,7 +36,7 @@ resource "oci_core_instance" "gpu_instance" {
   }
 
     extended_metadata = {
-        cohere_api_key = var.cohere_api_key
+        HF_KEY = var.hf_api_key
     }
 }
 

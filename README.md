@@ -27,7 +27,7 @@ A terraform script to start a photobooth app using stable diffusion XL and coher
 ```bash
     export TF_VAR_tenancy_ocid='<tenancy-ocid>'
     export TF_VAR_compartment_ocid='<comparment-ocid>'
-    export TF_VAR_region='<oci-region>'
+    export TF_VAR_region='<oci-region>'eu-frankfurt-1,
 ```
 
 4. If you're using a Linux OS, you may need to execute the following command to to generate private key to access the instance.

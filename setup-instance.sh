@@ -18,15 +18,20 @@ dnf install wget git git-lfs jq python3.11 python3.11-devel.x86_64 python3.11-tk
 
 alternatives --set python3 /usr/bin/python3.11
 
+HF_KEY=`curl -L http://169.254.169.254/opc/v1/instance/ | jq -r '.metadata."HF_KEY"'`
+
 # ComfyUI
 su -c "git clone https://github.com/comfyanonymous/ComfyUI.git /home/$USER/ComfyUI" $USER
 su -c "git clone https://github.com/carlgira/oci-flux-training /home/$USER/oci-flux-training" $USER
 su -c "cd /home/$USER/ComfyUI && python3 -m venv venv && source venv/bin/activate && pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121 xformers && pip install -r requirements.txt" $USER
 su -c "cp /home/$USER/oci-flux-training/comfyui/start.sh /home/$USER/ComfyUI/start.sh" $USER
 
+
 # Flux
 su -c "git clone https://github.com/ostris/ai-toolkit.git /home/$USER/ai-toolkit" $USER
+su -c "cd /home/$USER/ai-toolkit && echo HF_TOKEN=$HF_KEY > .env" $USER
 su -c "cd /home/$USER/ai-toolkit && git submodule update --init --recursive && python3 -m venv venv && source venv/bin/activate && pip3 install torch && pip3 install -r requirements.txt" $USER
+su -c "cp /home/$USER/oci-flux-training/flux/* /home/$USER/ai-toolkit" $USER
 
 cat <<EOT >> /etc/systemd/system/comfyui.service
 [Unit]

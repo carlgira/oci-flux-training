@@ -34,3 +34,6 @@ variable "oci_profile" {
   description = ""
 }
 
+variable "hf_api_key" {
+  description = ""
+}
