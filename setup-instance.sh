@@ -58,6 +58,7 @@ systemctl daemon-reload
 systemctl enable comfyui.service
 systemctl start comfyui.service
 
+echo "Setup finished"
 }
 
 main_function 2>&1 >> /var/log/startup.log
