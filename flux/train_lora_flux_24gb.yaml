@@ -6,6 +6,7 @@ config:
     - type: 'sd_trainer'
       training_folder: "output"
       device: cuda:0
+      trigger_word: "train_lora_flux"
       network:
         type: "lora"
         linear: 16

@@ -25,7 +25,7 @@ su -c "git clone https://github.com/comfyanonymous/ComfyUI.git /home/$USER/Comfy
 su -c "git clone https://github.com/carlgira/oci-flux-training /home/$USER/oci-flux-training" $USER
 su -c "cd /home/$USER/ComfyUI && python3 -m venv venv && source venv/bin/activate && pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121 xformers && pip install -r requirements.txt" $USER
 su -c "cp /home/$USER/oci-flux-training/comfyui/start.sh /home/$USER/ComfyUI/start.sh" $USER
-
+su -c "cd /home/$USER/ComfyUI/custom_nodes && git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git" $USER
 
 # Flux
 su -c "git clone https://github.com/ostris/ai-toolkit.git /home/$USER/ai-toolkit" $USER
